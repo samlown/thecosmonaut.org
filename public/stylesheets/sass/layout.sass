@@ -1,10 +1,134 @@
 
+body
+  background: #EDEDED
+
+body.page-home
+  background: #EDEDED url('/images/backgrounds/gradient1.png') 0 0 repeat-x
+
+a
+  color: #0099cc
+
 header, footer, section, article, aside, nav
   position: relative
   display: block
 
-footer
+header.layout
+  position: relative
+  margin-bottom: 40px
+  z-index: 500
+
+  .userBar
+    text-align: right
+
+  .mainHeader
+    position: relative
+    margin-top: 40px
+
+  .language
+    position: absolute
+    right: 20px
+    top: 20px
+
+  h1
+    display: block
+    margin: 0
+    margin-bottom: 5px
+    padding: 0
+    a
+      display: block
+      width: 400px
+      height: 45px
+      background: url('/images/elcosmonauta.png') 0 0 no-repeat
+      span
+        display: none
+
+  a
+    font-weight: bold
+  
+  nav 
+    height: 20px
+
+    .option
+      float: left
+      margin-right: 20px
+
+  .popupMenuArea
+    position: relative
+    display: inline
+    padding-left: 15px
+    z-index: 600
+    
+    .popupMenu
+      position: absolute
+      top: -8px
+      left: -0px
+      z-index: 600
+      width: 328px
+      height: 173px
+      background: url('/images/backgrounds/popup_menu_320x165.png') 0 0 no-repeat
+
+      ul
+        position: relative
+        padding: 0px
+        margin: 30px 20px 30px 20px
+        list-style: none
+        z-index: 1001
+      li
+        float: left
+        width: 132px
+        padding: 4px
+        margin: 0px
+        a
+          text-decoration: none
+
+    .menuLink
+      position: relative
+      display: inline
+      z-index: 601
+
+body.en
+  %header
+    .logo h1 a
+      background: url('/images/elcosmonauta.en.png') 0 0 no-repeat
+
+
+footer.layout
   clear: both 
+  position: relative
+  margin-bottom: 40px
+  margin-top: 30px
+  padding-top: 30px
+  border-top: 1px solid #C7C7C6
+  .companies
+    color: #666666
+    font-size: 13px
+    line-height: 15px
+    
+    .company
+      float: left
+      // width: 230px
+      font-size: 12px
+      .details
+        width: 200px
+        padding-top: 5px
+
+    .company.vostok
+      img
+        margin-top: 4px
+
+    .company.credits
+      img
+        margin-top: 5px
+      .details
+        width: 260px
+    img
+      float: left
+      margin-right: 10px
+
+  .creativecommons
+    position: absolute
+    right: 0px
+    top: 50px
 
 .ui-dialog
   font-size: 10px
@@ -13,3 +137,11 @@ footer
 
 .hidden
   display: none
+
+
+//**** Special pages with unique layouts by page name
+
+.page-home
+  header.layout
+    .mainHeader
+      display: none

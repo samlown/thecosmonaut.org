@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
   def prepare_theme
-    @current_theme = "default"
+    @current_theme = "cosmo"
   end
 
   def current_user_is_admin?

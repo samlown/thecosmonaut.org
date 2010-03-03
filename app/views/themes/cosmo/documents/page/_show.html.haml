@@ -1,0 +1,13 @@
+- if document.slug == 'home'
+  = render_partial_from_theme 'documents/page/home', :locals => {:document => document}
+
+- else
+  %article.page.span-24{:id => "document_#{document.id}"}
+    .content.span-24
+      %header
+        = document_actions
+
+      :textile
+        #{textile_wiki_filter(@document.content)}
+
+

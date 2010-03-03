@@ -1,9 +1,112 @@
+body {
+  background: #EDEDED; }
+
+body.page-home {
+  background: #EDEDED url('/images/backgrounds/gradient1.png') 0 0 repeat-x; }
+
+a {
+  color: #0099cc; }
+
 header, footer, section, article, aside, nav {
   position: relative;
   display: block; }
 
-footer {
-  clear: both; }
+header.layout {
+  position: relative;
+  margin-bottom: 40px;
+  z-index: 500; }
+  header.layout .userBar {
+    text-align: right; }
+  header.layout .mainHeader {
+    position: relative;
+    margin-top: 40px; }
+  header.layout .language {
+    position: absolute;
+    right: 20px;
+    top: 20px; }
+  header.layout h1 {
+    display: block;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0; }
+    header.layout h1 a {
+      display: block;
+      width: 400px;
+      height: 45px;
+      background: url('/images/elcosmonauta.png') 0 0 no-repeat; }
+      header.layout h1 a span {
+        display: none; }
+  header.layout a {
+    font-weight: bold; }
+  header.layout nav {
+    height: 20px; }
+    header.layout nav .option {
+      float: left;
+      margin-right: 20px; }
+  header.layout .popupMenuArea {
+    position: relative;
+    display: inline;
+    padding-left: 15px;
+    z-index: 600; }
+    header.layout .popupMenuArea .popupMenu {
+      position: absolute;
+      top: -8px;
+      left: -0px;
+      z-index: 600;
+      width: 328px;
+      height: 173px;
+      background: url('/images/backgrounds/popup_menu_320x165.png') 0 0 no-repeat; }
+      header.layout .popupMenuArea .popupMenu ul {
+        position: relative;
+        padding: 0px;
+        margin: 30px 20px 30px 20px;
+        list-style: none;
+        z-index: 1001; }
+      header.layout .popupMenuArea .popupMenu li {
+        float: left;
+        width: 132px;
+        padding: 4px;
+        margin: 0px; }
+        header.layout .popupMenuArea .popupMenu li a {
+          text-decoration: none; }
+    header.layout .popupMenuArea .menuLink {
+      position: relative;
+      display: inline;
+      z-index: 601; }
+
+body.en %header .logo h1 a {
+  background: url('/images/elcosmonauta.en.png') 0 0 no-repeat; }
+
+footer.layout {
+  clear: both;
+  position: relative;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #C7C7C6; }
+  footer.layout .companies {
+    color: #666666;
+    font-size: 13px;
+    line-height: 15px; }
+    footer.layout .companies .company {
+      float: left;
+      font-size: 12px; }
+      footer.layout .companies .company .details {
+        width: 200px;
+        padding-top: 5px; }
+    footer.layout .companies .company.vostok img {
+      margin-top: 4px; }
+    footer.layout .companies .company.credits img {
+      margin-top: 5px; }
+    footer.layout .companies .company.credits .details {
+      width: 260px; }
+    footer.layout .companies img {
+      float: left;
+      margin-right: 10px; }
+  footer.layout .creativecommons {
+    position: absolute;
+    right: 0px;
+    top: 50px; }
 
 .ui-dialog {
   font-size: 10px; }
@@ -12,4 +115,7 @@ footer {
   font-size: 13px; }
 
 .hidden {
+  display: none; }
+
+.page-home header.layout .mainHeader {
   display: none; }

@@ -1,6 +1,21 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+
+$(document).ready(function() {
+
+  $('.menuLink').click( function(){
+    $('.popupMenu').toggle();
+    return false;
+  });
+  $('.popupMenu').mouseleave( function() {
+    $(this).fade();
+  });
+
+
+});
+
+
 /*
  * Send the provided form object using AJAX and parse the results provided as JSON.
  *

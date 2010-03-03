@@ -1,0 +1,44 @@
+%header.layout.span-24
+  - if logged_in?
+    - if current_user_is_admin?
+      .adminToggle
+        %a{:href => '#'} toggle preview 
+        = link_to "users", users_url, :class => 'dialogLink', 'data-title' => "User accounts"
+    .userBar.span-24
+      %span.greeting
+        Logged in as 
+        = link_to current_user.email, user_url(current_user)
+      %span.action
+        = '(' + link_to("Log out", logout_path, { :title => "Log out" }) + ')' 
+
+  .language
+    - if I18n.locale.to_s == 'en'
+      = link_to "Web en español", :locale => 'es'
+    - elsif I18n.locale.to_s == 'es'
+      = link_to "English Site", :locale => 'en'
+
+  .mainHeader 
+    %h1
+      %a{:href => documents_url}
+        %span= "El Cosmonauta"
+
+    %nav
+      .option
+        = link_to 'Vuelve al inicio', document_url('home') 
+      .option
+        .popupMenuArea
+          .popupMenu{:style => 'display: none'}
+            %ul
+              %li= link_to 'El proyecto', document_url('proyecto')
+              %li= link_to 'Prensa', document_url('prensa')
+              %li= link_to 'Hazte productor', document_url('hazte-productor')
+              %li= link_to 'FAQ', document_url('faq')
+              %li= link_to 'Blog de la película', document_url('blog')
+              %li= link_to 'Equipo', document_url('equipo')
+              %li= link_to 'Tienda', 'products'
+              %li= link_to 'Descargas y recargas', document_url('descargas')
+              %li.clear
+          .menuLink
+            = link_to 'Menu', document_url('home')
+            = image_tag('widgets/down_arrow.png')
+

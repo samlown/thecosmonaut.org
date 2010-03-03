@@ -1,0 +1,12 @@
+
+%article.page.home.span-24{:id => "document_#{document.id}"}
+  %header
+    = document_actions
+
+  .span-24.topIntroduction
+    .background &nbsp;
+
+    :textile
+      #{textile_wiki_filter(@document.content)}
+
+
