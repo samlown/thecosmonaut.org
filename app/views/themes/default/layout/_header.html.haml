@@ -2,23 +2,20 @@
   - if current_user_is_admin?
     .adminToggle
       %a{:href => '#'} toggle preview 
-      = link_to "users", users_url, :class => 'dialogLink', 'data-title' => "User accounts"
-  .userBar.span-24
+      = link_to "users", users_url, 'data-dialog' => true, 'data-title' => "User accounts"
+  .userBar
     - if I18n.available_locales.length > 1
       %span.locales
         - I18n.available_locales.each do |locale|
           = link_to_if I18n.locale.to_s != locale.to_s, locale.to_s, :locale => locale.to_s
     - if logged_in?
       %span.greeting
-        Logged in as 
-        = link_to current_user.email, user_url(current_user)
+        = t('views.layout.logged_in_as', :link => link_to(current_user.email, edit_user_url(current_user), 'data-dialog' => true, 'data-title' => "Edit your user details"))
       %span.action
-        = '(' + link_to("Log out", logout_path, { :title => "Log out" }) + ')' 
+        = '(' + link_to(t("views.layout.logout"), logout_path, { :title => t("views.layout.logout") }) + ')' 
     - else
       %span.action
         = link_to "Log in",  login_path,  { :title => "Log in" }
-        -# 
-          = link_to "Sign up", signup_path, { :title => "Create an account" }
 
   %h1
     = link_to 'Just Documents', documents_url

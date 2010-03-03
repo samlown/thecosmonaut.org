@@ -10,6 +10,8 @@ a {
 header, footer, section, article, aside, nav {
   position: relative;
   display: block; }
+  header a.strike, footer a.strike, section a.strike, article a.strike, aside a.strike, nav a.strike {
+    text-decoration: line-through; }
 
 header.layout {
   position: relative;
@@ -119,3 +121,9 @@ footer.layout {
 
 .page-home header.layout .mainHeader {
   display: none; }
+
+span.spinner {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: url('/images/spinner-large.gif') 0px 0px no-repeat; }

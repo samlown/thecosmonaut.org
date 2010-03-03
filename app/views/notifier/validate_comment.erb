@@ -1,0 +1,12 @@
+Posted on "<%= @comment.document.title %>".
+
+Posted by: "<%=h @comment.full_email %>" at <%= @comment.created_at.to_s %>.
+
+Message Body:
+
+<%=h @comment.content %>
+
+
+View this comment here:
+<%= @url %>
+

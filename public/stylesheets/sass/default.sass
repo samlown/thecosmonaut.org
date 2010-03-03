@@ -8,7 +8,14 @@ header.layout
   height: 120px
   font-size: 12px
   .userBar
-    text-align: right
+    position: absolute
+    width: 500px 
+    right: 0px 
+    text-align: right 
+  .adminToggle
+    position: absolute
+    width: 300px
+    left: 0px
   h1
     padding-top: 40px
     font-weight: bold
@@ -16,13 +23,19 @@ header.layout
     a
       text-decoration: none
 
+footer.layout
+  padding-top: 40px
+  text-align: right
+
 // For content
 #content
   .comments
-    ul
-      list-style: none
-      margin: 0px
-      li.comment
+    .highlighted
+      background: #eee
+    .notPublished
+      border: 1px dashed red
+    article
+      margin-bottom: 10px
   .comments.form
     form
       p
@@ -32,6 +45,7 @@ header.layout
         font-size: 13px
       textarea
         height: 150px
+
   
   article.collectionItem
     h3

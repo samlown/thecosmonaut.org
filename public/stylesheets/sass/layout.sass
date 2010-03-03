@@ -11,6 +11,8 @@ a
 header, footer, section, article, aside, nav
   position: relative
   display: block
+  a.strike
+    text-decoration: line-through
 
 header.layout
   position: relative
@@ -138,10 +140,15 @@ footer.layout
 .hidden
   display: none
 
-
 //**** Special pages with unique layouts by page name
 
 .page-home
   header.layout
     .mainHeader
       display: none
+
+span.spinner
+  display: block 
+  width: 30px
+  height: 30px
+  background: url('/images/spinner-large.gif') 0px 0px no-repeat

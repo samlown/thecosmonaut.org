@@ -2,8 +2,6 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-
   time:
     formats:
       # default: "%a %b %d %H:%M:%S %z %Y"
@@ -12,3 +10,4 @@ en:
       long: "%d %B, %Y %H:%M" 
     am: "am" 
     pm: "pm" 
+

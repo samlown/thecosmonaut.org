@@ -1,6 +1,7 @@
 class Document < ActiveRecord::Base
 
   has_many :comments, :dependent => :delete_all
+  has_many :comment_users, :through => :comments, :source => :user
   has_many :revisions, :class_name => 'DocumentRevision', :dependent => :delete_all
 
   has_many :translations, :class_name => 'DocumentTranslation'
@@ -22,7 +23,7 @@ class Document < ActiveRecord::Base
 
   named_scope :layout_is, lambda {|layout| {:conditions => ['documents.layout = ?', layout]}}
 
-  named_scope :for_current_locale, :conditions => ['documents.locale IS NULL OR documents.locale = ? OR documents.locale = ?', '', I18n.locale.to_s]
+  named_scope :for_current_locale, lambda { {:conditions => ['(documents.locale IS NULL OR documents.locale = ?) OR documents.locale = ?', '', I18n.locale.to_s]} }
 
   named_scope :ordered, :order => 'position ASC'
 
@@ -38,7 +39,7 @@ class Document < ActiveRecord::Base
 
   before_save :prepare_revision
   after_save :save_revision
-  attr_accessor :revision_comment, :minor_revision, :no_revision
+  attr_accessor :revision_comment, :revision_user, :minor_revision, :no_revision
 
   def initialize(attribs = {})
     attribs[:metadata] ||= { }
@@ -96,11 +97,11 @@ class Document < ActiveRecord::Base
     end
 
     def prepare_revision
-      @parent_revision = self.parent.revisions.build(:comment => "Added new child \"#{self.title}\"", :minor => true) unless self.parent.nil?
+      @parent_revision = self.parent.revisions.build(:comment => "Added new child \"#{self.title}\"", :minor => true, :user => (revision_user || user)) unless self.parent.nil?
     end
     def save_revision
-      unless no_revision || !changed?
-        self.revisions.create(:comment => revision_comment, :minor => minor_revision)
+      unless no_revision # || !changed? # Disabled, as causes problem with translated columns
+        self.revisions.create(:comment => revision_comment, :user => (revision_user || user), :minor => minor_revision)
         @parent_revision.save unless @parent_revision.nil? 
       end
     end

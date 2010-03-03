@@ -5,6 +5,9 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
+    if logged_in?
+      redirect_back_or_default('/')
+    end
   end
 
   def create
@@ -18,7 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "You have been logged out."
     redirect_back_or_default('/')
   end
 
