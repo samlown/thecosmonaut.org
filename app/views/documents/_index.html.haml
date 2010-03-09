@@ -1,0 +1,31 @@
+.span-18
+  .documents.index
+
+    - form_tag documents_url, :method => :get do
+      = label_tag "search: "
+      = text_field_tag :q, params[:q]
+      = hidden_field_tag :layout, params[:layout]
+      %strong= "layout: "
+      = link_to_if !params[:layout].blank?, 'all', {:layout => ''}, 'data-dialog' => true
+      |
+      = ['page', 'blog', 'blog_entry', 'collection'].map{|l| link_to_if params[:layout] != l, l, {:layout => l}, 'data-dialog' => true}.join(' | ')
+
+    %table
+      %thead
+        %tr
+          %th= "slug"
+          %th= "title"
+          %th= "layout"
+          %th= "updated"
+      %tbody
+        - @documents.each do |doc|
+          %tr
+            %td= link_to truncate(doc.slug), document_url(doc.slug), :title => doc.slug
+            %td= doc.title
+            %td= doc.layout
+            %td= doc.updated_at
+
+    %br
+    = page_entries_info @documents
+    %br
+    = will_paginate @documents 

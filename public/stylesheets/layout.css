@@ -114,7 +114,9 @@ footer.layout {
   font-size: 10px; }
 
 #dialog {
-  font-size: 13px; }
+  font-size: 12px; }
+  #dialog .documents.index table {
+    font-size: 10px; }
 
 .hidden {
   display: none; }

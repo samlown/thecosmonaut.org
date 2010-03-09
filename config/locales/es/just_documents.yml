@@ -32,8 +32,9 @@ es:
       web: "Website"
       password: "Password"
       password_confirmation: "Confirm password"
-      comment_notify: "Receive new comment notifcations by default"
+      comment_notify: "Receive email notifcations by default"
       save: "Save"
+      role: "Role"
       signup_thanks: |
         Thanks for signing up! We've sent you an email with your activation code. You need to activate you account
         before you can make comments that don't require validation.

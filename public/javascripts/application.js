@@ -74,7 +74,7 @@ $.stdDialog = {
 
   bindings: function() {
     // Bind to generic dialog link (not live!)
-    $('a.dialogLink, a[data-dialog]').live('click', function() {
+    $('a.dialogLink, a[data-dialog], #dialog .pagination a').live('click', function() {
       $.stdDialog.show($(this).attr('data-title'));
       $.get($(this).attr('href'), '', function(result) {
         $.stdDialog.html(result.view);
@@ -130,6 +130,7 @@ $.stdDialog = {
     if (contents) {
       $('#dialog').html(contents);
       $('#dialog form .markItUp').markItUp(mySettings);
+      $('#dialog input:visible:first').focus();
    } else {
       return $('#dialog').html();
     }
@@ -145,6 +146,12 @@ $.stdDialog = {
       success: function(result) {
         if (result.view) {
           $.stdDialog.html(result.view);
+        } else if (result.redirect_to) {
+          $.get(result.redirect_to, '', function(r) {
+            $.stdDialog.html(r.view);
+          }, 'json');
+        } else if (result.reload_url) {
+          window.location = result.reload_url;
         } else {
           window.location.reload();
         }
@@ -235,7 +242,7 @@ $(document).ready(function() {
   $.stdDialog.bindings(); // This should always be first!
   $.commentActions.bindings();
 
-  $('a[data-confirm]').live('click', function() {
+  $('a[data-confirm], button[data-confirm]').live('click', function() {
     if (confirm($(this).attr('data-confirm'))) {
       return true;
     } else {
